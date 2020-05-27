@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\ProductDetail;
 use App\Http\Resources\ProductDetailIndexResource;
 use App\Http\Resources\ProductDetailShowResource;
+use Illuminate\Support\Facades\Log;
 
 class ProductDetailController extends Controller
 {
@@ -37,14 +38,16 @@ class ProductDetailController extends Controller
 
     public function update(Request $request, $id)
     {
+        Log::info($id);
         $data = $request->validate([
             'stock' => 'required|max:1000',
             'type' => 'required|max:5',
             'size' => 'required',
             'product_id' => 'required|exists:products,id'
         ]);
-
-        $product_detail = ProductDetail::where('id', $id)->update($data);
+        Log::info($data);
+        $product_detail = ProductDetail::find($id);
+        $product_detail->update($data);
         return new ProductDetailShowResource($product_detail);
     }
 }
