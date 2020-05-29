@@ -47,10 +47,8 @@
                 :disabled="sending"
                 >Submit</button>
             </div>
-            
         </form>
-        
-        </div>
+      </div>
   </div>
 </template>
 
@@ -78,7 +76,6 @@ export default {
       success: false
     };
   },
-
 
   methods: {
     submit() {
