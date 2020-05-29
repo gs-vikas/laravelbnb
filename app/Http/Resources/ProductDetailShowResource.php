@@ -18,6 +18,7 @@ class ProductDetailShowResource extends JsonResource
             'id' => $this->id,
             'stock' => $this->stock,
             'type' => $this->type,
+            'size' => $this->size,
             'product_id' => $this->product_id
         ];
     }

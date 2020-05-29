@@ -29,7 +29,7 @@ class ProductController extends Controller
         $data = $request->validate([
             'name' => 'required|max:36',
             'description' => 'required|max:200',
-            'status' => 'required|in:1,2,3,4,5'
+            'status' => 'required|in:0,1,2,3,4,5'
         ]);
         $product = Product::make($data);
         $product->save();
