@@ -83,9 +83,12 @@ export default {
       this.errors = null;
       this.sending = true;
       this.success = false;
-
+      const configHeaders = {
+        "content-type": "application/json",
+        "Accept": "application/json"
+      };
       axios
-        .post(`/api/products`, this.product)
+        .post(`/api/products`, this.product,  {headers: configHeaders})
         .then(response => {
           this.success = 201 === response.status;
           alert("Product added successfully!!")

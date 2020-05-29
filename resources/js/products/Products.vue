@@ -48,8 +48,11 @@ export default {
   },
   created() {
     this.loading = true;
-
-    const request = axios.get("/api/products").then(response => {
+    const configHeaders = {
+      "content-type": "application/json",
+      "Accept": "application/json"
+    };
+    const request = axios.get("/api/products", {headers: configHeaders}).then(response => {
       console.log(response.data)
       this.products = response.data;
       this.loading = false;

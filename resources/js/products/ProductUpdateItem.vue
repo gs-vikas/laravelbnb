@@ -83,8 +83,13 @@ export default {
   async created(){
     this.product.id = this.$route.params.id;
     this.loading = true;
+    const configHeaders = {
+      "content-type": "application/json",
+      "Accept": "application/json"
+    };
       this.product = (await axios.get(
-        `/api/products/${this.product.id}`
+        `/api/products/${this.product.id}`,
+        {headers: configHeaders}
       )).data;
   },
 
